@@ -11,6 +11,41 @@ import org.junit.Test;
 
 public class DegreeOfAnArray {
 
+    public int findDegreeSlow(int[] arr) {
+        Map<Integer, Integer> freq = new HashMap<>();
+        int maxFreq = -1;
+        for(int x : arr) {
+          freq.put(x, freq.getOrDefault(x, 0) + 1);
+          if(maxFreq == -1 || freq.get(x) > maxFreq)
+            maxFreq = freq.get(x);
+        }
+        List<Integer> nums = new ArrayList<>();
+        for(int key : freq.keySet()) {
+          if(freq.get(key) == maxFreq)
+            nums.add(key);
+        }
+        
+        //find the minimum window sub array which contains
+        //[1,2,2,3,1]
+        //[1,2]
+        //1:[1,2,2,3,1]
+        //2:[1,2,2], [2,2]
+        int minimumSubarray = arr.length;
+        for(int x : nums) {
+          int j = 0;
+          Map<Integer, Integer> currFreq = new HashMap<>();
+          for(int i = 0; i < arr.length; i++) {
+            currFreq.put(arr[i], currFreq.getOrDefault(arr[i], 0) + 1);
+            while(currFreq.getOrDefault(x, 0) == maxFreq) {
+              minimumSubarray = Math.min(minimumSubarray, i - j + 1);
+              currFreq.put(arr[j], currFreq.get(arr[j]) - 1);
+              j++;
+            }
+          }
+        }
+        return minimumSubarray;
+      }
+
     public int findDegree(int[] arr) {
         /*
          * [1,2,2,3,4,5,1]
