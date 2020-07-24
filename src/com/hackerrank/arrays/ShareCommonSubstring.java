@@ -1,8 +1,8 @@
 package com.hackerrank.arrays;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 
 public class ShareCommonSubstring {
     static String twoStrings(String s1, String s2) {
@@ -15,6 +15,10 @@ public class ShareCommonSubstring {
                 return "YES";
         }
         return "NO";
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Hello World");
     }
 
     @Test
