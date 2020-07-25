@@ -1,4 +1,4 @@
-package com.hackerrank.arrays;
+package com.leetcode.arrays;
 
 public class MergedSortedArrayInPlace {
     public void merge(int[] nums1, int m, int[] nums2, int n) {

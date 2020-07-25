@@ -1,4 +1,4 @@
-package com.hackerrank.arrays;
+package com.leetcode.arrays;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
