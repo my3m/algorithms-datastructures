@@ -1,4 +1,4 @@
-package com.interviewcake;
+package com.interviewcake.graph;
 
 import static org.junit.Assert.fail;
 
