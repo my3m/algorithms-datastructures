@@ -1,6 +1,5 @@
 package com.interviewcake.arrays;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
