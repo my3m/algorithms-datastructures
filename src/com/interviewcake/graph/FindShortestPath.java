@@ -3,8 +3,10 @@ package com.interviewcake.graph;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -23,7 +25,7 @@ public class FindShortestPath {
         1. Because it's a single path, we can use a global visited set to track of visited nodes
         2. We can represent LinkedList<List<String>> & last value in list is the polled value
     */
-    public static String[] getPath(Map<String, String[]> graph, String startNode, String endNode) {
+    public String[] getShortestPathUsingBFS(Map<String, String[]> graph, String startNode, String endNode) {
         if(!graph.containsKey(startNode) || !graph.containsKey(endNode))
             throw new IllegalArgumentException();
         Set<String> visited = new HashSet<>();
@@ -60,6 +62,57 @@ public class FindShortestPath {
             path[i] = lstPath.get(i);
         }
         return path;
+    }
+
+
+    public String[] getPath(Map<String, String[]> graph, String startNode, String endNode) { 
+        String[] dfs = getShortestPathUsingDFS(graph, startNode, endNode);
+        String[] bfs = getShortestPathUsingBFS(graph, startNode, endNode);
+        if(!Arrays.equals(bfs, dfs))
+            fail("bfs not equal to dfs!");
+        return bfs;
+    }
+
+    public String[] getShortestPathUsingDFS(Map<String, String[]> graph, String startNode, String endNode) {
+        if(!graph.containsKey(startNode) || !graph.containsKey(endNode))
+        throw new IllegalArgumentException();
+        List<String> result = getShortestPathHelper(graph, startNode, startNode, endNode);
+        if(result.size() == 0)
+            return null;
+        String[] shortestPath = new String[result.size()];
+        int k = 0;
+        for(int i = result.size() - 1; i > -1 ; i--) {
+            shortestPath[k++] = result.get(i);
+        }
+        return shortestPath;
+    }
+
+
+    Set<String> visited = new HashSet<>();
+    public List<String> getShortestPathHelper(Map<String, String[]> graph, String currentNode,
+     String startNode, String endNode) {
+         List<String> result = new ArrayList<>();
+         if(currentNode.equals(endNode)) {
+            result.add(currentNode);
+            return result;
+         }
+         else {
+            for(String nei : graph.get(currentNode)) {
+                if(visited.contains(nei))
+                    continue;
+                visited.add(nei);
+                List<String> path = getShortestPathHelper(graph, nei, startNode, endNode);
+                if(path.size() > 0) {
+                    if(result.size() == 0 || path.size() < result.size())
+                    result = path;
+                }
+                visited.remove(nei);
+            }
+        }
+        if(result.size() > 0) {
+            result.add(currentNode);
+        }
+        return result;
     }
 
     // tests
