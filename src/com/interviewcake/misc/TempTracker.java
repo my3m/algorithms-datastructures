@@ -1,4 +1,4 @@
-package com.interviewcake.datastructures;
+package com.interviewcake.misc;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -9,9 +9,7 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-public class CustomDataStructure {
-    static class TempTracker {
-
+public class TempTracker {
         // fill in the TempTracker class methods below
         int totalSum = 0;
         int freq = 0;

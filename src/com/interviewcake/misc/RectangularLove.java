@@ -1,4 +1,4 @@
-package com.interviewcake;
+package com.interviewcake.misc;
 
 import static org.junit.Assert.assertEquals;
 
