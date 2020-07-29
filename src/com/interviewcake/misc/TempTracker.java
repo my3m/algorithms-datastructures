@@ -63,10 +63,6 @@ public class TempTracker {
                 return 0;
             return modeTemperature;
         }
-    }
-
-
-
 
     // tests
 
@@ -102,7 +98,7 @@ public class TempTracker {
     }
 
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(CustomDataStructure.class);
+        Result result = JUnitCore.runClasses(TempTracker.class);
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());
         }
