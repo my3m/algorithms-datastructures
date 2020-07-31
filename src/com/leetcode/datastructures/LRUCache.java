@@ -1,6 +1,9 @@
-package com.leetcode.linkedlist;
+package com.leetcode.datastructures;
 
-class LRUCache {
+import java.util.HashMap;
+import java.util.Map;
+
+public class LRUCache {
     
     final Map<Integer, ListNode> cache = new HashMap<>();
     final ListNode head = new ListNode(-1, -1);
