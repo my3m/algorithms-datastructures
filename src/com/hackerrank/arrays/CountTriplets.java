@@ -39,8 +39,38 @@ public class CountTriplets {
         return count;
     }
 
+    public static void countTriplets2(int[] arr, int r) {
+        int ans = 0;
+        for(int i = 0; i < arr.length; i++) {
+          ans += countTripletsHelper(arr, r, i, 0);
+        }
+        //ans+= countTripletsHelper(arr, r, 1, 0);
+        System.out.println(ans);
+      }
+      
+      
+      public static int countTripletsHelper(int[] arr, int r, 
+                                            int index, int n) {
+        if(n == 2) {
+          return 1;
+        }
+        int ans = 0;
+        for(int i = index; i < arr.length; i++) {
+          if(arr[index]*r == arr[i]) {
+            ans += countTripletsHelper(arr, r, i, n + 1);
+          }
+        }
+        return ans;
+      }
+
     @Test
     public void Test1() {
         assertEquals(4, countTriplets(new int[] { 1, 5, 5, 25, 125 }, 5));
+    }
+
+    
+    @Test
+    public void Test2() {
+       countTriplets2(new int[] { 1, 1, 1, 1 }, 1);
     }
 }
