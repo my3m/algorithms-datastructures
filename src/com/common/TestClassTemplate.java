@@ -1,4 +1,7 @@
 package com.common;
+
+import java.util.*;
+
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -13,6 +16,10 @@ public class TestClassTemplate {
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());
         }
+    }
+
+    public void execute() {
+
     }
 
     @Test
