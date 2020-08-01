@@ -1,5 +1,7 @@
 package com.common;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.*;
 
 import org.junit.Test;
@@ -19,7 +21,7 @@ public class TestClassTemplate {
     }
 
     public void execute() {
-
+        
     }
 
     @Test
