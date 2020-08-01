@@ -31,10 +31,15 @@ public class TwoSumBst {
                 (containsTarget(root1.left, root2, target) || containsTarget(root1, root2.left, target));
     }
 
+    /*
+        You can save the seen values in a hash set for the first tree
+        Then traverse the second tree, and see if seen values contains target offset
+    */
     public boolean containsTarget2(TreeNode root1, TreeNode root2, int target) {
         Set<Integer> seenSet = new HashSet<>();
         LinkedList<TreeNode> s = new LinkedList<>();
         s.push(root1);
+        /* Pre-order traversal */
         while(s.size() > 0) {
             TreeNode treeNode = s.pop();
             seenSet.add(treeNode.val);
