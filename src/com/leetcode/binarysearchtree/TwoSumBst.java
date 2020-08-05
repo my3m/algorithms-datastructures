@@ -39,7 +39,7 @@ public class TwoSumBst {
         Set<Integer> seenSet = new HashSet<>();
         LinkedList<TreeNode> s = new LinkedList<>();
         s.push(root1);
-        /* Pre-order traversal */
+        /* Pre-order traversal  */
         while(s.size() > 0) {
             TreeNode treeNode = s.pop();
             seenSet.add(treeNode.val);
